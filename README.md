@@ -4,7 +4,8 @@
 
 ## Proposed AI-BOM Model
 
-We analyzed the leading SBOM formats and various model card formats, and conducted extensive research with AI/ML experts and developers. Below is our initial proposed AI-BOM model. No existing SBOM (CycloneDX or SPDX) or model card format perfectly matches the below content, so we acknowledge there is additional work needed with those communities to align & consolidate models. 
+We analyzed the leading SBOM formats and various model card formats, and conducted extensive research with AI/ML experts and developers. Below is our initial proposed AI-BOM model. No existing SBOM (CycloneDX or SPDX) or model card format perfectly matches the below content, so we acknowledge there is additional work needed with those communities to align & consolidate models.  
+
 
 ### Model Details
 
@@ -37,7 +38,8 @@ Information about how and when the BOM was generated, and who generated it: a ti
 Links to other resources, such as papers, contact email addresses, websites, etc. 
 
 **Tags** [Optional]  
-Tags or other labels associated with a model, which can often be scraped from HuggingFace or other repositories. 
+Tags or other labels associated with a model, which can often be scraped from HuggingFace or other repositories.  
+
 
 
 ### Model Architecture
@@ -65,6 +67,7 @@ Information about the model's parent model. If present, this would
 
 **Software included** [Required]  
 A boolean (True / False) that indicates whether a model includes software files (e.g. python, go, etc.) as part of the core files. See this how this [model](https://huggingface.co/tiiuae/falcon-7b-instruct/tree/main) includes python scripts as part of its listed files. 
+
 
 ### Usage  
 
