@@ -8,13 +8,13 @@ We analyzed the leading SBOM formats and various model card formats, and conduct
 
 ### Model Details
 
-**Name**  [Required]
+**Name**  [Required]  
 The name of the model. 
 
-**Version** [Required]
+**Version** [Required]  
 The version of the model. 
 
-**Type** [Required]
+**Type** [Required]  
 The type of the model. Samples include: "text-generation," "image-processing."
 
 **Author** [Required]
