@@ -2,7 +2,13 @@
 
 # Manifest AI-BOM Wiki
 
-## Proposed AI-BOM Model
+This is where we hope to build community around AI bills of material (AI-BOMs). In this repository, we have and maintain
+  (1) A proposed minimum - or highly suggested - elements for AI BOMs (below)
+  (2) Examples of AI-BOMs in the `/examples` folder, which contain both AI-BOM samples in existing formats (such as CycloneDX), as well as examples in our   
+      proposed / suggested format, which is based off of CycloneDX but has additional fields that they don't yet account for. 
+
+
+## Proposed AI-BOM Elements
 
 We analyzed the leading SBOM formats and various model card formats, and conducted extensive research with AI/ML experts and developers. Below is our initial proposed AI-BOM model. No existing SBOM (CycloneDX or SPDX) or model card format perfectly matches the below content, so we acknowledge there is additional work needed with those communities to align & consolidate models.  
 
