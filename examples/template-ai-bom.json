@@ -16,7 +16,7 @@
     },
     "components": [
       {
-        "bom-ref": "unique-id-for-this-model",
+        "bom-ref": "ml-id-ref",
         "type": "machine-learning-model",
         "group": "CompVis",
         "name": "model-name",
@@ -106,6 +106,27 @@
                 "type": "mailist-list",
                 "url" : "contact@modeldev.com"
             }
+        ]
+      },
+      {
+        "type": "library",
+        "bom-ref": "pytorch-id-ref",
+        "name": "PyTorch",
+        "description": "Description"
+      },
+      {
+        "type": "library",
+        "bom-ref": "onnx-id-ref",
+        "name": "ONNX",
+        "description": "Description"
+      }
+    ],
+    "dependencies": [
+      {
+        "ref": "ml-id-ref",
+        "dependsOn": [
+          "onnx-id-ref",
+          "pytorch-id-ref"
         ]
       }
     ]
