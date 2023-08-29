@@ -5,12 +5,12 @@
     "metadata": {
         "timestamp": "2023-03-28T19:16:23Z",
         "authors": {
-            "name": "Nitish Kulkarni"
+            "name": "Firstname Lastname"
         },
         "tools": [
           {
-            "name": "manifest-cli",
-            "version": "1.1.2"
+            "name": "manually-generated",
+            "version": "0.0.0"
           }
         ]
     },
