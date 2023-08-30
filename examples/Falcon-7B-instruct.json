@@ -36,7 +36,7 @@
               "task": "text-generation-inference"
             }
           ],
-          "architectureFamily": "Falcon (https://falconllm.tii.ae/)",
+          "architectureFamily": "RefinedWeb/Falcon (https://falconllm.tii.ae/)",
           "modelArchitecture": "RefinedWeb",
           "baseModel": {
             "name": "bloom",
