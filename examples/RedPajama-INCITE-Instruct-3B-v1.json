@@ -47,11 +47,11 @@
               "task": "text inference"
             }
           ],
-          "architectureFamily": "LLaMA (https://together.ai/blog/redpajama-models-v1)",
-          "modelArchitecture": "GPT-JT",
+          "architectureFamily": "GPT-NeoX (https://together.ai/blog/redpajama-models-v1)",
+          "modelArchitecture": "GPTNeoXForCausalLM",
           "baseModel": {
             "name": "RedPajama-INCITE-Base-3B-v1",
-            "source": "https://huggingface.co/togethercomputer/RedPajama-INCITE-7B-Base"
+            "source": "https://huggingface.co/togethercomputer/RedPajama-INCITE-Base-3B-v1"
           },
           "parentModel": "RedPajama-INCITE-Base-3B-v1",
           "datasets": [
