@@ -1,4 +1,4 @@
-<img src="https://github.com/manifest-cyber/ai-bom/cr@m.png" width="250" height="250">
+<img src="cr@m.png" width="250" height="250">
 
 # Manifest AI-BOM Wiki
 
