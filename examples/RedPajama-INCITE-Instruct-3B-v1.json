@@ -1,6 +1,6 @@
 {
-    "bomFormat": "CycloneDX",
-    "specVersion": "1.5",
+    "bomFormat": "AIDX",
+    "specVersion": "1.0",
     "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
     "metadata": {
         "timestamp": "2023-03-28T19:16:23Z",
@@ -18,7 +18,7 @@
       {
         "bom-ref": "ml-id-ref",
         "type": "machine-learning-model",
-        "group": "Together Computer",
+        "supplier": "Together Computer",
         "name": "RedPajama-INCITE-Instruct-3B-v1",
         "version": "1.4",
         "description": "A 2.8B parameter pretrained language model.",
@@ -42,9 +42,6 @@
         ],
         "modelCard": {
           "modelParameters": {
-            "approach": {
-              "type": "supervised"
-            },
             "tasks": [
               {
                 "task": "text inference"
@@ -52,7 +49,10 @@
             ],
             "architectureFamily": "LLaMA (https://together.ai/blog/redpajama-models-v1)",
             "modelArchitecture": "GPT-JT",
-            "baseModel": "RedPajama-INCITE-Base-3B-v1",
+            "baseModel": {
+              "name": "RedPajama-INCITE-Base-3B-v1",
+              "source": "https://huggingface.co/togethercomputer/RedPajama-INCITE-7B-Base"
+            },
             "parentModel": "RedPajama-INCITE-Base-3B-v1",
             "datasets": [
               {
@@ -92,7 +92,7 @@
                 "name": "Together Discord",
                 "type": "chat",
                 "url" : "https://discord.gg/6ZVDU8tTD4"
-            },
+            }
         ]
       },
       {
