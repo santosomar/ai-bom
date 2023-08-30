@@ -18,24 +18,11 @@
       {
         "bom-ref": "ml-id-ref",
         "type": "machine-learning-model",
-        "group": "CompVis",
+        "author": "CompVis",
         "name": "model-name",
         "version": "1.4",
         "description": "Text description of what this model is and what it does.",
         "category": "text-generation",
-        "dependencies": [
-            {
-                "dependency" : {
-                    "name": "PyTorch"
-                },
-                "dependency" : {
-                    "name": "ONNX"
-                },
-                "dependency" : {
-                    "name": "Diffusers"
-                }
-            }
-        ],
         "licenses" : [
             {
                 "license": {
@@ -55,8 +42,16 @@
             ],
             "architectureFamily": "The architecture family (e.g. Llama2) goes here.",
             "modelArchitecture": "The architecture of the model, e.g. GPT-J.",
-            "baseModel": "",
-            "parentModel": "",
+            "baseModel": {
+                "name": "stable-diffusion",
+                "version": "1.0",
+                "source": "wwww.huggingface.co/baseModel"
+            },
+            "parentModel": {
+                "name": "stable-diffusion",
+                "version": "1.0",
+                "source": "wwww.huggingface.co/parentModel"
+            },
             "datasets": [
               {
                 "type": "dataset",
