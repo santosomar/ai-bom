@@ -6,7 +6,7 @@
   "metadata": {
     "timestamp": "2023-03-28T19:16:23Z",
     "authors": {
-        "name": "Grace Hopper"
+      "name": "Grace Hopper"
     },
     "tools": [
       {
@@ -24,12 +24,12 @@
       "version": "1.4",
       "description": "Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input. For more information about how Stable Diffusion functions, please have a look at \uD83E\uDD17's Stable Diffusion with \uD83E\uDDE8Diffusers blog.",
       "version": "1.4",
-      "licenses" : [
-          {
-              "license": {
-                  "id": "Apache-2.0"
-              }
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
           }
+        }
       ],
       "modelCard": {
         "modelParameters": {
@@ -49,8 +49,8 @@
               "classification": "public"
             }
           ],
-          "inputs": [ { "format": "string" } ],
-          "outputs": [ { "format": "byte[]" } ]
+          "inputs": [{ "format": "string" }],
+          "outputs": [{ "format": "byte[]" }]
         },
         "quantitativeAnalysis": {
           "performanceMetrics": [
@@ -79,12 +79,8 @@
           }
         },
         "considerations": {
-          "users": [
-            "Who are the intended users of the model?"
-          ],
-          "useCases": [
-            "Who are the intended users of the model?"
-          ],
+          "users": ["Who are the intended users of the model?"],
+          "useCases": ["Who are the intended users of the model?"],
           "technicalLimitations": [
             "What are the known technical limitations of the model? E.g. What kind(s) of data should the model be expected not to perform well on? What are the factors that might degrade model performance?"
           ],
@@ -110,31 +106,30 @@
     }
   ],
   "externalReferences": [
-      {
-          "comment": "Model source",
-          "type": "vcs",
-          "url" : "https://huggingface.co/path/to/the/model"
-      },
-      {
-          "comment": "Model website",
-          "type": "website",
-          "url" : "https://www.modelwebsite.com"
-      },
-      {
-          "comment": "Model paper",
-          "type": "documentation",
-          "url" : "https://www.modelwebsite.com/path/to/paper"
-      },
-      {
-          "name": "Community Discord",
-          "type": "chat",
-          "url" : "https://discord.com/group_name"
-      },
-      {
-          "Comment": "Contact us",
-          "type": "mailist-list",
-          "url" : "contact@modeldev.com"
-      }
+    {
+      "comment": "Model source",
+      "type": "vcs",
+      "url": "https://huggingface.co/path/to/the/model"
+    },
+    {
+      "comment": "Model website",
+      "type": "website",
+      "url": "https://www.modelwebsite.com"
+    },
+    {
+      "comment": "Model paper",
+      "type": "documentation",
+      "url": "https://www.modelwebsite.com/path/to/paper"
+    },
+    {
+      "name": "Community Discord",
+      "type": "chat",
+      "url": "https://discord.com/group_name"
+    },
+    {
+      "Comment": "Contact us",
+      "type": "mailist-list",
+      "url": "contact@modeldev.com"
+    }
   ]
 }
-  

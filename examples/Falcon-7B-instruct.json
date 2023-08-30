@@ -1,104 +1,101 @@
 {
-    "bomFormat": "AIDX",
-    "specVersion": "1.0",
-    "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69c99",
-    "metadata": {
-        "timestamp": "2023-06-22T12:16:23Z",
-        "authors": {
-            "name": "Stringer Bell"
-        },
-        "tools": [
-          {
-            "name": "manually-generated"
-          }
-        ]
+  "bomFormat": "AIDX",
+  "specVersion": "1.0",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69c99",
+  "metadata": {
+    "timestamp": "2023-06-22T12:16:23Z",
+    "authors": {
+      "name": "Stringer Bell"
     },
-    "components": [
+    "tools": [
       {
-        "bom-ref": "falcon-7b-instruct",
-        "type": "machine-learning-model",
-        "supplier": "https://www.tii.ae",
-        "name": "Falcon 7b Instruct",
-        "description": "Falcon-7B-Instruct is a 7B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets. It is made available under the Apache 2.0 license.",
-        "category": "text-generation",
-        "modelArchitecture": "GPT-3",
-        "licenses" : [
-            {
-                "license": {
-                    "id": "Apache-2.0"
-                }
-            }
-        ],
-        "modelCard": {
-          "modelParameters": {
-            "tasks": [
-              {
-                "task": "text-generation-inference"
-              }
-            ],
-            "architectureFamily": "",
-            "modelArchitecture": "",
-            "baseModel": {
-                "name": "falcon-7b",
-                "source": "https://huggingface.co/tiiuae/falcon-7b"
-            },
-            "datasets": [
-              {
-                "type": "dataset",
-                "name": "falcon-refinedweb",
-                "contents": {
-                  "url": "https://huggingface.co/datasets/tiiuae/falcon-refinedweb"
-                },
-                "classification": "public"
-              }
-            ]
-          },
-          "usage" : {
-            "intended-use": "Falcon-7B-Instruct has been finetuned on a mixture of instruct and chat datasets.",
-            "out-of-scope": "Production use without adequate assessment of risks and mitigation; any use cases which may be considered irresponsible or harmful."
-          },
-          "considerations": {
-            "ethicalConsiderations": "Falcon-7B-Instruct is mostly trained on English data, and will not generalize appropriately to other languages. Furthermore, as it is trained on a large-scale corpora representative of the web, it will carry the stereotypes and biases commonly encountered online."
-          }
-        },
-        "externalReferences": [
-            {
-                "comment": "Contact",
-                "type": "email",
-                "url" : "falconllm@tii.ae"
-            },
-            {
-                "comment": "Source URL",
-                "type": "vcs",
-                "url" : "https://huggingface.co/tiiuae/falcon-7b-instruct"
-            }
-        ]
-      },
-      {
-        "type": "library",
-        "bom-ref": "pytorch-id-ref",
-        "name": "PyTorch"
-      },
-      {
-        "type": "library",
-        "bom-ref": "core-ml-id-ref",
-        "name": "Core ML"
-      },
-      {
-        "type": "library",
-        "bom-ref": "transformers-id-ref",
-        "name": "Transformers"
-      }
-    ],
-    "dependencies": [
-      {
-        "ref": "falcon-7b-instruct",
-        "dependsOn": [
-          "pytorch-id-ref",
-          "core-ml-id-ref",
-          "transformers-id-ref"
-        ]
+        "name": "manually-generated"
       }
     ]
+  },
+  "components": [
+    {
+      "bom-ref": "falcon-7b-instruct",
+      "type": "machine-learning-model",
+      "supplier": "https://www.tii.ae",
+      "name": "Falcon 7b Instruct",
+      "description": "Falcon-7B-Instruct is a 7B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets. It is made available under the Apache 2.0 license.",
+      "category": "text-generation",
+      "modelArchitecture": "RefinedWeb",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "tasks": [
+            {
+              "task": "text-generation-inference"
+            }
+          ],
+          "architectureFamily": "RefinedWeb/Falcon (https://falconllm.tii.ae/)",
+          "modelArchitecture": "RefinedWeb",
+          "baseModel": {
+            "name": "bloom",
+            "source": "https://huggingface.co/bigscience/bloom"
+          },
+          "datasets": [
+            {
+              "type": "dataset",
+              "name": "falcon-refinedweb",
+              "contents": {
+                "url": "https://huggingface.co/datasets/tiiuae/falcon-refinedweb"
+              },
+              "classification": "public"
+            }
+          ]
+        },
+        "usage": {
+          "intended-use": "Falcon-7B-Instruct has been finetuned on a mixture of instruct and chat datasets.",
+          "out-of-scope": "Production use without adequate assessment of risks and mitigation; any use cases which may be considered irresponsible or harmful."
+        },
+        "considerations": {
+          "ethicalConsiderations": "Falcon-7B-Instruct is mostly trained on English data, and will not generalize appropriately to other languages. Furthermore, as it is trained on a large-scale corpora representative of the web, it will carry the stereotypes and biases commonly encountered online."
+        }
+      },
+      "externalReferences": [
+        {
+          "comment": "Contact",
+          "type": "email",
+          "url": "falconllm@tii.ae"
+        },
+        {
+          "comment": "Source URL",
+          "type": "vcs",
+          "url": "https://huggingface.co/tiiuae/falcon-7b-instruct"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pytorch-id-ref",
+      "name": "PyTorch"
+    },
+    // This in only necessary if you run the local core ml version
+    {
+      "type": "library",
+      "bom-ref": "core-ml-id-ref",
+      "name": "Core ML"
+    },
+    {
+      "type": "library",
+      "bom-ref": "transformers-id-ref",
+      "name": "Transformers"
+    }
+  ],
+  // I do not understand this dependency
+  "dependencies": [
+    {
+      "ref": "falcon-7b-instruct",
+      "dependsOn": ["pytorch-id-ref", "core-ml-id-ref", "transformers-id-ref"]
+    }
+  ]
 }
-  
