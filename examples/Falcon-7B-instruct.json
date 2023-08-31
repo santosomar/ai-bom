@@ -9,7 +9,8 @@
     },
     "tools": [
       {
-        "name": "manually-generated"
+        "name": "manifest-cli",
+        "version": "1.0.0"
       }
     ]
   },
@@ -79,7 +80,6 @@
       "bom-ref": "pytorch-id-ref",
       "name": "PyTorch"
     },
-    // This in only necessary if you run the local core ml version
     {
       "type": "library",
       "bom-ref": "core-ml-id-ref",
@@ -91,7 +91,6 @@
       "name": "Transformers"
     }
   ],
-  // I do not understand this dependency
   "dependencies": [
     {
       "ref": "falcon-7b-instruct",

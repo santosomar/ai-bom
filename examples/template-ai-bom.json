@@ -42,8 +42,16 @@
           ],
           "architectureFamily": "The architecture family (e.g. Llama2) goes here.",
           "modelArchitecture": "The architecture of the model, e.g. GPT-J.",
-          "baseModel": "",
-          "parentModel": "",
+          "baseModel": {
+            "name": "Base model name.",
+            "version": "Base model version",
+            "source": "Link to base model"
+          },
+          "parentModel":  {
+            "name": "Parent model name.",
+            "version": "Parent model version",
+            "source": "Link to parent model"
+          },
           "datasets": [
             {
               "type": "dataset",
