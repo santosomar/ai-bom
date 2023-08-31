@@ -9,8 +9,8 @@
     },
     "tools": [
       {
-        "name": "manually-generated",
-        "version": "0.0.0"
+        "name": "manifest-cli",
+        "version": "1.0.0"
       }
     ]
   },
