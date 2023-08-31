@@ -23,16 +23,6 @@
       "version": "1.4",
       "description": "A 2.8B parameter pretrained language model.",
       "category": "text-generation",
-      "dependencies": [
-        {
-          "dependency": {
-            "name": "PyTorch"
-          },
-          "dependency": {
-            "name": "transformers"
-          }
-        }
-      ],
       "licenses": [
         {
           "license": {

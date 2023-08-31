@@ -23,19 +23,6 @@
       "version": "1.4",
       "description": "Text description of what this model is and what it does.",
       "category": "text-generation",
-      "dependencies": [
-        {
-          "dependency": {
-            "name": "PyTorch"
-          },
-          "dependency": {
-            "name": "ONNX"
-          },
-          "dependency": {
-            "name": "Diffusers"
-          }
-        }
-      ],
       "licenses": [
         {
           "license": {
