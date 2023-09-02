@@ -1,6 +1,6 @@
 {
-    "bomFormat": "AIDX",
-    "specVersion": "1.0",
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.5",
     "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921b2349",
     "metadata": {
         "timestamp": "2023-03-28T19:16:23Z",
@@ -22,7 +22,13 @@
         "name": "stable-diffusion-xl-base",
         "version": "1.0",
         "description": "This is a model that can be used to generate and modify images based on text prompts. It is a Latent Diffusion Model that uses two fixed, pretrained text encoders (OpenCLIP-ViT/G and CLIP-ViT/L).",
-        "category": "text-to-image",
+        "properties" : {
+          "category": "text-to-image",
+          "baseModel": "stable-diffusion-v2.1",
+          "parentModel": "stable-diffusion-v2.1",
+          "intended-use": "The model is intended for research purposes only. Possible research areas and tasks include. Generation of artworks and use in design and other artistic processes. Applications in educational or creative tools. Research on generative models. Safe deployment of models which have the potential to generate harmful content. Probing and understanding the limitations and biases of generative models. Excluded uses are described below.",
+          "out-of-scope": "The model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model."
+        },
         "licenses" : [
             {
                 "license": {
@@ -39,11 +45,6 @@
             ],
             "architectureFamily": "Latest Diffusion Model",
             "modelArchitecture": "Stable Diffusion with Refiner",
-            "baseModel": {
-              "name": "stable-diffusion",
-              "version": "2.1",
-              "source": ""
-            },
             "parentModel": {
               "name": "stable-diffusion",
               "version": "2.1",
@@ -60,12 +61,12 @@
               }
             ]
           },
-          "usage" : {
-            "intended-use": "The model is intended for research purposes only. Possible research areas and tasks include. Generation of artworks and use in design and other artistic processes. Applications in educational or creative tools. Research on generative models. Safe deployment of models which have the potential to generate harmful content. Probing and understanding the limitations and biases of generative models. Excluded uses are described below.",
-            "out-of-scope": "The model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model."
-          },
           "considerations": {
-            "ethicalConsiderations": "The model does not achieve perfect photorealism. The model cannot render legible text. The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”. Faces and people in general may not be generated properly. The autoencoding part of the model is lossy."
+            "ethicalConsiderations": [
+              {
+                "name": "The model does not achieve perfect photorealism. The model cannot render legible text. The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”. Faces and people in general may not be generated properly. The autoencoding part of the model is lossy."
+              }
+            ]
           }
         },
         "externalReferences": [
