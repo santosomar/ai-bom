@@ -13,6 +13,7 @@ import (
 	"github.com/manifest-cyber/ai-bom/cmd/cli/options"
 	"github.com/manifest-cyber/ai-bom/pkg/domain"
 	"github.com/manifest-cyber/ai-bom/pkg/huggingface"
+	"github.com/manifest-cyber/ai-bom/pkg/openai"
 )
 
 func BomCommand() *cobra.Command {
@@ -77,6 +78,10 @@ func runBom(ctx context.Context, opt *options.BomOptions, args []string) error {
 		huggingface.WithToken(opt.HuggingFaceAPIKey),
 	)
 
+	openaiClient := openai.NewCompletionsClient(
+		openai.WithToken(opt.OpenAIAPIKey),
+	)
+
 	file, err := client.StreamFile(ctx, repoID, "README.md", "", "model", revision)
 	if err != nil {
 		return err
@@ -92,5 +97,13 @@ func runBom(ctx context.Context, opt *options.BomOptions, args []string) error {
 	// Print the file contents to stdout
 	//nolint:forbidigo
 	fmt.Println(string(contents))
+
+	res, err := openaiClient.Completions(ctx, "this is a prompt, please write a response!")
+	if err != nil {
+		return err
+	}
+	//nolint:forbidigo
+	fmt.Println(res)
+
 	return nil
 }
