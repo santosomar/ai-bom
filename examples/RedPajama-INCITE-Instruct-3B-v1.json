@@ -18,7 +18,7 @@
     {
       "bom-ref": "ml-id-ref",
       "type": "machine-learning-model",
-      "supplier": "Together Computer",
+      "author": "Together Computer",
       "name": "RedPajama-INCITE-Instruct-3B-v1",
       "version": "1.4",
       "description": "A 2.8B parameter pretrained language model.",
