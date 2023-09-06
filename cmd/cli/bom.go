@@ -4,8 +4,10 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 
+	cdx "github.com/CycloneDX/cyclonedx-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"golang.org/x/exp/slices"
@@ -13,7 +15,7 @@ import (
 	"github.com/manifest-cyber/ai-bom/cmd/cli/options"
 	"github.com/manifest-cyber/ai-bom/pkg/domain"
 	"github.com/manifest-cyber/ai-bom/pkg/huggingface"
-	"github.com/manifest-cyber/ai-bom/pkg/openai"
+	"github.com/manifest-cyber/ai-bom/pkg/serializer"
 )
 
 func BomCommand() *cobra.Command {
@@ -78,9 +80,13 @@ func runBom(ctx context.Context, opt *options.BomOptions, args []string) error {
 		huggingface.WithToken(opt.HuggingFaceAPIKey),
 	)
 
-	openaiClient := openai.NewCompletionsClient(
-		openai.WithToken(opt.OpenAIAPIKey),
+	apiClient := huggingface.NewHFAPIClient(
+		huggingface.WithAPIToken(opt.HuggingFaceAPIKey),
 	)
+
+	// openaiClient := openai.NewCompletionsClient(
+	// 	openai.WithToken(opt.OpenAIAPIKey),
+	// )
 
 	file, err := client.StreamFile(ctx, repoID, "README.md", "", "model", revision)
 	if err != nil {
@@ -89,21 +95,50 @@ func runBom(ctx context.Context, opt *options.BomOptions, args []string) error {
 	defer file.Close()
 
 	// Parse the file contents
-	contents, err := io.ReadAll(file)
+	// contents, err := io.ReadAll(file)
+	// if err != nil {
+	// 	return err
+	// }
+
+	modelInfo, err := apiClient.GetModelInfo(ctx, &huggingface.GetModelInfoOptions{
+		RepoID:   repoID,
+		Revision: revision,
+	})
 	if err != nil {
 		return err
 	}
 
-	// Print the file contents to stdout
-	//nolint:forbidigo
-	fmt.Println(string(contents))
-
-	res, err := openaiClient.Completions(ctx, "this is a prompt, please write a response!")
+	comp, err := serializer.ConvertHuggingfaceModelToBom(opt.Name, opt.Version, modelInfo)
 	if err != nil {
 		return err
 	}
-	//nolint:forbidigo
-	fmt.Println(res)
+
+	var wr io.Writer
+	if opt.Output == "" {
+		wr = os.Stdout
+	} else {
+		file, err := os.Create(opt.Output)
+		if err != nil {
+			return err
+		}
+
+		defer file.Close()
+		wr = file
+	}
+
+	encoder := cdx.NewBOMEncoder(wr, cdx.BOMFileFormatJSON)
+	encoder.SetPretty(true)
+
+	if err := encoder.EncodeVersion(comp, comp.SpecVersion); err != nil {
+		return fmt.Errorf("encoding sbom to stream: %w", err)
+	}
+
+	// res, err := openaiClient.Completions(ctx, fmt.Sprintf("build a json from this README.md file content: %s", string(contents)))
+	// if err != nil {
+	// 	return err
+	// }
+	// //nolint:forbidigo
+	// fmt.Println(modelInfo)
 
 	return nil
 }

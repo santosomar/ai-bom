@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	completionsTemplate = "%s/engines/davinci/completions"
+	completionsTemplate = "%s/chat/completions"
 )
 
 type CompletionsClient struct {
@@ -39,7 +39,7 @@ func WithToken(token string) CompletionsClientOption {
 func NewCompletionsClient(opts ...CompletionsClientOption) *CompletionsClient {
 	client := &CompletionsClient{
 		baseURL: "https://api.openai.com/v1",
-		token:   os.Getenv("OPENAI_TOKEN"),
+		token:   os.Getenv("OPENAI_API_KEY"),
 	}
 
 	for _, opt := range opts {
@@ -54,9 +54,18 @@ func (c *CompletionsClient) OpenAICompletionsURL() string {
 }
 
 func (c *CompletionsClient) Completions(ctx context.Context, prompt string) (string, error) {
+	promptObj := struct {
+		Role    string `json:"role"`
+		Content string `json:"content"`
+	}{
+		Role:    "assistant",
+		Content: prompt,
+	}
+
 	payload := map[string]interface{}{
-		"prompt":     prompt,
-		"max_tokens": 150,
+		"messages":   []interface{}{promptObj},
+		"max_tokens": 16385,
+		"model":      "gpt-3.5-turbo-16k",
 	}
 
 	jsonData, err := json.Marshal(payload)
@@ -85,6 +94,9 @@ func (c *CompletionsClient) Completions(ctx context.Context, prompt string) (str
 		} `json:"choices"`
 	}
 
+	if err != nil {
+		return "", err
+	}
 	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
 		return "", err
 	}

@@ -12,11 +12,6 @@ import (
 	"strings"
 )
 
-const (
-	huggingfaceDownloadFileTemplate = "https://huggingface.co/%s/resolve/%s/%s"
-	defaultRevision                 = "main"
-)
-
 var (
 	repoTypes = map[string]bool{
 		"model":   true,
@@ -62,7 +57,7 @@ func WithToken(token string) HFHubClientOption {
 func NewHFHubClient(opts ...HFHubClientOption) *HFHubClient {
 	client := &HFHubClient{
 		defaultRevision: defaultRevision,
-		baseURL:         "https://huggingface.co",
+		baseURL:         HuggingfaceURL,
 		token:           os.Getenv("HF_TOKEN"),
 	}
 
@@ -93,7 +88,7 @@ func (c *HFHubClient) hfHubURL(repoID string, filename string, subfolder string,
 		revision = c.defaultRevision
 	}
 
-	u, err := url.Parse(fmt.Sprintf(huggingfaceDownloadFileTemplate, repoID, revision, filename))
+	u, err := url.Parse(fmt.Sprintf(huggingfaceDownloadFileTemplate, c.baseURL, repoID, revision, filename))
 	if err != nil {
 		return "", err
 	}
@@ -104,6 +99,10 @@ func (c *HFHubClient) hfHubURL(repoID string, filename string, subfolder string,
 	}
 
 	return u.String(), nil
+}
+
+func (c *HFHubClient) GetModel(ctx context.Context, repoID string, revision string) (io.ReadCloser, error) {
+	return c.StreamFile(ctx, repoID, "pytorch_model.bin", "", "model", revision)
 }
 
 func (c *HFHubClient) StreamFile(

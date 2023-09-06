@@ -3,6 +3,8 @@ module github.com/manifest-cyber/ai-bom
 go 1.20
 
 require (
+	github.com/CycloneDX/cyclonedx-go v0.7.2-0.20230730203904-8c9798ced848
+	github.com/google/uuid v1.1.2
 	github.com/muesli/mango-cobra v1.2.0
 	github.com/muesli/roff v0.1.0
 	github.com/spf13/cobra v1.7.0
