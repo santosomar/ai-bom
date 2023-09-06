@@ -129,6 +129,9 @@ scoops:
     repository:
       owner: '{{ .Env.ORG_NAME }}'
       name: scoop-bucket
+      pull_request:
+        enabled: true
+        draft: false
     homepage: https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}
     description: A tool to bom between different Software Bill of Materials (SBOM) formats.
     license: Apache-2.0
@@ -137,6 +140,9 @@ brews:
   - repository:
       owner: '{{ .Env.ORG_NAME }}'
       name: homebrew-tap
+      pull_request:
+        enabled: true
+        draft: false
     homepage: https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}
     goarm: "7"
     description: A tool to bom between different Software Bill of Materials (SBOM) formats.
