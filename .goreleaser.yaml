@@ -49,17 +49,17 @@ release:
  disable: false
  name_template: 'v{{ .Version }}'
  github:
-   owner: '{{ .Env.ORG_NAME }}'
+   owner: manifest-cyber
    name: '{{ .ProjectName }}'
 
 nfpms:
   - file_name_template: '{{ .ConventionalFileName }}'
     id: packages
-    homepage: https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}
+    homepage: https://github.com/manifest-cyber/{{ .ProjectName }}
     description: |-
-      A tool to bom between different Software Bill of Materials (SBOM) formats.
+      A tool to generate AIBOMs from HuggingFace models.
     maintainer: Ori Avraham <ori@manifestcyber.com>
-    vendor: '{{ .Env.ORG_NAME }}'
+    vendor: manifest-cyber
     bindir: /usr/bin
     section: utils
     contents:
@@ -121,41 +121,41 @@ publishers:
     - packages
     env:
     - 'FURY_TOKEN={{ .Env.FURY_TOKEN }}'
-    - 'FURY_ORG={{ .Env.ORG_NAME }}'
+    - 'FURY_ORG=manifest-cyber'
     cmd: ./scripts/fury-upload.sh {{ .ArtifactName }}
 
 scoops:
   -
     repository:
-      owner: '{{ .Env.ORG_NAME }}'
+      owner: manifest-cyber
       name: scoop-bucket
       branch: "{{.ProjectName}}-{{.Version}}"
       pull_request:
         enabled: true
         draft: false
         base:
-          owner: '{{ .Env.ORG_NAME }}'
+          owner: manifest-cyber
           name: scoop-bucket
           branch: main
-    homepage: https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}
-    description: A tool to bom between different Software Bill of Materials (SBOM) formats.
+    homepage: https://github.com/manifest-cyber/{{ .ProjectName }}
+    description: A tool to generate AIBOMs from HuggingFace models.
     license: Apache-2.0
 
 brews:
   - repository:
-      owner: '{{ .Env.ORG_NAME }}'
+      owner: manifest-cyber
       name: homebrew-tap
       branch: "{{.ProjectName}}-{{.Version}}"
       pull_request:
         enabled: true
         draft: false
         base:
-          owner: '{{ .Env.ORG_NAME }}'
+          owner: manifest-cyber
           name: homebrew-tap
           branch: main
-    homepage: https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}
+    homepage: https://github.com/manifest-cyber/{{ .ProjectName }}
     goarm: "7"
-    description: A tool to bom between different Software Bill of Materials (SBOM) formats.
+    description: A tool to generate AIBOMs from HuggingFace models.
     license: Apache-2.0
     folder: Formula
     install: |-
@@ -167,46 +167,46 @@ brews:
 
 dockers:
 - image_templates:
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-amd64'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-amd64'
   dockerfile: Dockerfile
   use: buildx
   build_flag_templates:
   - "--pull"
-  - "--label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}/main/README.md"
+  - "--label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/manifest-cyber/{{ .ProjectName }}/main/README.md"
   - "--label=io.artifacthub.package.logo-url=https://todo.add/file.png"
   - "--label=io.artifacthub.package.maintainers=[{\"name\":\"Ori Avraham\",\"email\":\"ori@manifestcyber.com\"}]"
   - "--label=io.artifacthub.package.license=Apache-2.0"
-  - "--label=org.opencontainers.image.description=A tool to bom between different Software Bill of Materials (SBOM) formats."
+  - "--label=org.opencontainers.image.description=A tool to generate AIBOMs from HuggingFace models."
   - "--label=org.opencontainers.image.created={{.Date}}"
   - "--label=org.opencontainers.image.name={{.ProjectName}}"
   - "--label=org.opencontainers.image.revision={{.FullCommit}}"
   - "--label=org.opencontainers.image.version={{.Version}}"
-  - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}"
+  - "--label=org.opencontainers.image.source=https://github.com/manifest-cyber/{{ .ProjectName }}"
   - "--platform=linux/amd64"
 - image_templates:
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-arm64'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-arm64'
   dockerfile: Dockerfile
   use: buildx
   build_flag_templates:
   - "--pull"
-  - "--label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}/main/README.md"
+  - "--label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/manifest-cyber/{{ .ProjectName }}/main/README.md"
   - "--label=io.artifacthub.package.logo-url=https://todo.add/file.png"
   - "--label=io.artifacthub.package.maintainers=[{\"name\":\"Ori Avraham\",\"email\":\"ori@manifestcyber.com\"}]"
   - "--label=io.artifacthub.package.license=Apache-2.0"
-  - "--label=org.opencontainers.image.description=A tool to bom between different Software Bill of Materials (SBOM) formats."
+  - "--label=org.opencontainers.image.description=A tool to generate AIBOMs from HuggingFace models."
   - "--label=org.opencontainers.image.created={{.Date}}"
   - "--label=org.opencontainers.image.name={{.ProjectName}}"
   - "--label=org.opencontainers.image.revision={{.FullCommit}}"
   - "--label=org.opencontainers.image.version={{.Version}}"
-  - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.ORG_NAME }}/{{ .ProjectName }}"
+  - "--label=org.opencontainers.image.source=https://github.com/manifest-cyber/{{ .ProjectName }}"
   - "--platform=linux/arm64"
   goarch: arm64
 docker_manifests:
-- name_template: 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}'
+- name_template: 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}'
   image_templates:
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-amd64'
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-arm64'
-- name_template: 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:latest'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-amd64'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-arm64'
+- name_template: 'ghcr.io/manifest-cyber/{{ .ProjectName }}:latest'
   image_templates:
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-amd64'
-  - 'ghcr.io/{{ .Env.ORG_NAME }}/{{ .ProjectName }}:{{ .Tag }}-arm64'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-amd64'
+  - 'ghcr.io/manifest-cyber/{{ .ProjectName }}:{{ .Tag }}-arm64'
