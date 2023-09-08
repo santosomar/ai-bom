@@ -3,7 +3,13 @@
     "specVersion": "1.5",
     "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921b2349",
     "metadata": {
-        "timestamp": "2023-03-28T19:16:23Z",
+      "component": {
+        "type": "machine-learning-model",
+        "name": "stable-diffusion-xl-base",
+        "version": "1.0",
+        "description": "This is a model that can be used to generate and modify images based on text prompts. It is a Latent Diffusion Model that uses two fixed, pretrained text encoders (OpenCLIP-ViT/G and CLIP-ViT/L)."
+      }, 
+      "timestamp": "2023-03-28T19:16:23Z",
         "authors": {
             "name": "Grace Hopper"
         },
@@ -23,11 +29,11 @@
         "version": "1.0",
         "description": "This is a model that can be used to generate and modify images based on text prompts. It is a Latent Diffusion Model that uses two fixed, pretrained text encoders (OpenCLIP-ViT/G and CLIP-ViT/L).",
         "properties" : {
-          "category": "text-to-image",
-          "baseModel": "stable-diffusion-v2.1",
-          "parentModel": "stable-diffusion-v2.1",
-          "intended-use": "The model is intended for research purposes only. Possible research areas and tasks include. Generation of artworks and use in design and other artistic processes. Applications in educational or creative tools. Research on generative models. Safe deployment of models which have the potential to generate harmful content. Probing and understanding the limitations and biases of generative models. Excluded uses are described below.",
-          "out-of-scope": "The model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model."
+            "category": "text-to-image",
+            "baseModel": "stable-diffusion-v2.1",
+            "parentModel": "stable-diffusion-v2.1",
+            "intended-use": "The model is intended for research purposes only. Possible research areas and tasks include. Generation of artworks and use in design and other artistic processes. Applications in educational or creative tools. Research on generative models. Safe deployment of models which have the potential to generate harmful content. Probing and understanding the limitations and biases of generative models. Excluded uses are described below.",
+            "out-of-scope": "The model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model."
         },
         "licenses" : [
             {
