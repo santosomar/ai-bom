@@ -3,6 +3,11 @@
   "specVersion": "1.5",
   "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69c99",
   "metadata": {
+    "component": {
+       "type": "machine-learning-model",
+       "name": "Falcon 7b Instruct",
+       "description": "Falcon-7B-Instruct is a 7B parameters causal decoder-only model built by TII based on Falcon-7B and finetuned on a mixture of chat/instruct datasets. It is made available under the Apache 2.0 license."
+    },
     "timestamp": "2023-06-22T12:16:23Z",
     "authors": {
       "name": "Stringer Bell"
